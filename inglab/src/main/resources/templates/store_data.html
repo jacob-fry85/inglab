@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      
+<body>
+	<div layout:fragment="content">
+		<div class="m-4">
+		 	<h2>Add Stocks Gainer | [[${pageTitle}]] </h2>
+		 	<div th:if="${message != null}">
+			 	<div class="alert alert-success alert-dismissible fade show" role="alert">
+				  <strong th:text="${message}"></strong> 
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+			</div>	
+		 </div>
+	 	
+		<form th:action="@{/store/save}" method="post" style="max-width: 700px;margin: 0 auto;"
+			th:object="${stocks}">
+		<div class="border border-secondary rounded p-3">
+		  <div class="form-group row">
+		    <label class="col-sm-4 col-form-label" for="num_gainers">Stocks Gainer</label>
+		    <div class="col-sm-8">
+		    	<input th:field="*{num_gainers}" required type="text" minlength="2" maxlength="45" class="form-control" aria-describedby="stocks_gainers" placeholder="Enter number">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group row">
+		    <label class="col-sm-4 col-form-label" for="num_loserss">Stocks Loser</label>
+		    <div class="col-sm-8">
+		    	<input th:field="*{num_losers}" required type="text" minlength="2" maxlength="45" class="form-control" aria-describedby="stocks_losers" placeholder="Enter number">
+		    </div>
+		  </div>
+		  
+		  <div class="text-center">
+		  	<input type="submit" class="btn btn-primary m-3" />
+		  	<input type="button" class="btn btn-secondary btn-cancel" value="Cancel" />
+		  </div>
+		</div>
+		</form>	
+	</div>	
+</body>
+</html>
